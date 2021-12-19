@@ -71,10 +71,10 @@ void loop() {
   voltage = ESP.getVcc();
   status = digitalRead(13);
   if (status == 0) {
-    client.publish("Windows/Bathroom", "open");
+    client.publish("Windows/Bathroom", "open", true);
     client.publish("Windows/Bathroom/Vcc", String(voltage).c_str());
   } else {
-    client.publish("Windows/Bathroom", "closed");
+    client.publish("Windows/Bathroom", "closed", true);
     client.publish("Windows/Bathroom/Vcc", String(voltage).c_str());
   }
   client.subscribe("Windows/Bathroom");
